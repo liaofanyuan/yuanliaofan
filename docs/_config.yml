@@ -1,8 +1,7 @@
 title: Yuan liaofan
-description: yuanliaofan,,
+description: yuanliaofan
 baseurl: ""
-url: "https://yuanliaofan.com"  # 添加 https:// 前缀
-
+url: "https://yuanliaofan.com"  
 # Build settings
 markdown: kramdown
 plugins:
@@ -23,7 +22,8 @@ exclude:
 
 defaults:
   - scope:
-      path: ""    # 空字符串表示匹配所有文件
+      path: ""   
       type: "pages"
     values:
       order: 20
+      
