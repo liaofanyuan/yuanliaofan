@@ -3,6 +3,13 @@ description: yuanliaofan
 baseurl: ""
 url: "https://yuanliaofan.com"  
 repository: liaofanyuan/yuanliaofan
+
+# Language settings
+languages: ["en", "zh"]
+default_lang: "zh"
+exclude_from_localization: ["assets", "css", "js", "images"]
+parallel_localization: true
+
 # Build settings
 markdown: kramdown
 plugins:
@@ -19,7 +26,6 @@ exclude:
   - .gitignore
   - README.md
   - .DS_Store
-
 
 defaults:
   - scope:

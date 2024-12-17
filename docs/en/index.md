@@ -12,7 +12,7 @@ lang: en
 ### [liaofan](./liaofan/)
 Learn more about Liaofan yuan
 
-### [liaofan4lessnos](./liaofan4lessnos/)
+### [liaofan4lessnos](./liaofan4lessons/)
 Learn more about Liaofan yuan
 
 ### [resources](./resources/)

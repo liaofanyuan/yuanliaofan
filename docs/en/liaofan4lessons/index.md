@@ -1,7 +1,8 @@
 ---
 layout: directory
-title: Liaofan yuan
+title: LiaoFan's 4 Lessons
 lang: en
 ---
 
-Learn more about Liaofan yuan
+Learn more about Liaofan's Four Lessons on Cultivating Virtue
+

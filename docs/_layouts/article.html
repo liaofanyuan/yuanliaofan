@@ -9,4 +9,49 @@ layout: default
     <div class="article-content">
         {{ content }}
     </div>
+
+    {% assign posts = site.pages | where_exp: "item", "item.layout == 'article'" | where: "lang", page.lang | sort: "order" %}
+    {% for post in posts %}
+        {% if post.url == page.url %}
+            {% assign prev_index = forloop.index0 | minus: 1 %}
+            {% assign next_index = forloop.index0 | plus: 1 %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+
+    <nav class="article-navigation">
+        {% if prev_index >= 0 %}
+            {% assign prev_post = posts[prev_index] %}
+            <a href="{{ prev_post.url | relative_url }}" class="prev-article">【上一篇】{{ prev_post.title }}</a>
+        {% endif %}
+        
+        {% if next_index < posts.size %}
+            {% assign next_post = posts[next_index] %}
+            <a href="{{ next_post.url | relative_url }}" class="next-article">【下一篇】{{ next_post.title }}</a>
+        {% endif %}
+    </nav>
 </article>
+
+<style>
+.article-navigation {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.prev-article, .next-article {
+    text-decoration: none;
+    color: #666;
+    padding: 0.5em 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.prev-article:hover, .next-article:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+</style>
