@@ -2,6 +2,7 @@ title: Yuan liaofan
 description: yuanliaofan
 baseurl: ""
 url: "https://yuanliaofan.com"  
+repository: liaofanyuan/yuanliaofan
 # Build settings
 markdown: kramdown
 plugins:
@@ -26,4 +27,3 @@ defaults:
       type: "pages"
     values:
       order: 20
-      
