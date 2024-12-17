@@ -1,0 +1,14 @@
+<header class="site-header">
+    <div class="wrapper">
+        <a class="site-title" href="/">{{ site.title | escape }}</a>
+        <nav class="site-nav">
+            <a href="/" class="nav-link">Home</a>
+            {% assign current_path = page.url | remove_first: '/en/' | remove_first: '/zh/' %}
+            {% if page.url contains '/zh/' %}
+                <a href="/en/{{ current_path }}" class="nav-link">English</a>
+            {% else %}
+                <a href="/zh/{{ current_path }}" class="nav-link">中文</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>

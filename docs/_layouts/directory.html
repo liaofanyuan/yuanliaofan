@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<div class="directory-page">
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+    
+    <div class="directory-list">
+        {% assign dir_path = page.dir %}
+        {% assign dir_files = site.pages | where_exp: "item", "item.url contains dir_path" %}
+        
+        {% assign sorted_pages = dir_files | sort: 'order' %}
+        {% for p in sorted_pages %}
+            {% unless p.name == "index.md" %}
+                <div class="directory-item">
+                    <a href="{{ p.url }}" class="directory-link">
+                        <h3>{% if p.title %}{{ p.title }}{% else %}{{ p.name | remove: ".md" | replace: "-", " " | capitalize }}{% endif %}</h3>
+                        {% if p.description %}
+                            <p>{{ p.description }}</p>
+                        {% endif %}
+                    </a>
+                </div>
+            {% endunless %}
+        {% endfor %}
+    </div>
+</div>

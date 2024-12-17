@@ -1,0 +1,29 @@
+title: Yuan liaofan
+description: yuanliaofan,,
+baseurl: ""
+url: "https://yuanliaofan.com"  # 添加 https:// 前缀
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git/
+  - .gitignore
+  - README.md
+  - .DS_Store
+
+
+defaults:
+  - scope:
+      path: ""    # 空字符串表示匹配所有文件
+      type: "pages"
+    values:
+      order: 20
