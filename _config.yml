@@ -69,6 +69,17 @@ collections:
 # 页面宽度
 page_width: 800px
 
+# 禁用社交分享按钮
+gitbook:
+  sharing:
+    facebook: false
+    twitter: false
+    google: false
+    weibo: false
+    instapaper: false
+    vk: false
+    all: false
+
 # 构建设置
 destination: ./_site
 incremental: false
