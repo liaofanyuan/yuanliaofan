@@ -4,7 +4,6 @@ title: 了凡四训
 permalink: /
 ---
 
-
 ### [第一章 立命之学](./lesson1.html)
 命由我作，福由我求
 
