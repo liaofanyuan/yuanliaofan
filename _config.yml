@@ -1,0 +1,75 @@
+# 网站配置
+title: 了凡四训
+longtitle: 了凡四训
+author: 袁了凡
+description: >
+  了凡四训
+
+baseurl: ""
+url: "https://yuanliaofan.com"  
+repository: liaofanyuan/yuanliaofan
+
+# 使用 jekyll-gitbook 主题
+remote_theme: sighingnow/jekyll-gitbook
+
+# 目录配置
+toc:
+  enabled: true
+  h_min: 1
+  h_max: 3
+
+# favicon 配置
+favicon_path: /assets/gitbook/images/favicon.ico
+
+# Markdown 引擎配置
+markdown: kramdown
+kramdown:
+  auto_ids: true
+  input: GFM
+  math_engine: mathjax
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  toc_levels: 1..6
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    guess_lang: true
+
+syntax_highlighter_style: colorful
+
+markdown_ext: markdown,mkdown,mkdn,mkd,md
+
+# 永久链接格式
+permalink: /:categories/:year-:month-:day-:title:output_ext
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-readme-index
+  - jemoji
+
+# 排除文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git/
+  - .gitignore
+  - .DS_Store
+  - _drafts
+  - docs/
+  - demo/
+  - test/
+
+# 集合配置（用于组织页面）
+collections:
+  pages:
+    output: true
+    permalink: /:collection/:path/
+
+# 页面宽度
+page_width: 800px
+
+# 构建设置
+destination: ./_site
+incremental: false
+regenerate: true
