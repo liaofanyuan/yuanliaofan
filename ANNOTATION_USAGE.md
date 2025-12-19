@@ -81,3 +81,6 @@ permalink: /lesson1.html
 - `_layouts/post.html` - 覆盖主题布局并引入资源
 
 所有 `layout: post` 的文章都会自动加载译注功能。
+
+
+bundle exec jekyll serve
