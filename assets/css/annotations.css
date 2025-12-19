@@ -1,0 +1,176 @@
+/* 💬 触发按钮 */
+.anno-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.3em;
+  margin-right: 0.1em;
+  padding: 0.15em 0.35em;
+  border: none;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  line-height: 1;
+  opacity: 0.85;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+
+.anno-trigger:hover,
+.anno-trigger:focus-visible {
+  opacity: 1;
+  outline: none;
+  background: rgba(59, 130, 246, 0.2);
+  transform: scale(1.1);
+}
+
+/* 弹出的译文气泡（默认隐藏） */
+.anno-pop {
+  position: absolute;
+  z-index: 9999;
+  max-width: min(520px, 90vw);
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  background: #fff;
+  color: #1f2937;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  font-size: 1em;
+  line-height: 1.8;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .anno-pop {
+    max-width: 92vw;
+    padding: 14px 16px;
+    font-size: 0.95em;
+    line-height: 1.7;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .anno-trigger {
+    background: rgba(96, 165, 250, 0.15);
+  }
+  
+  .anno-trigger:hover,
+  .anno-trigger:focus-visible {
+    background: rgba(96, 165, 250, 0.25);
+  }
+  
+  .anno-pop {
+    background: #1f2937;
+    color: #f3f4f6;
+    border: 2px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+  }
+}
+
+/* 显示状态 */
+.anno-pop.is-open {
+  display: block;
+  animation: fadeInScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 气泡顶部标签 */
+.anno-pop::before {
+  content: "💬 白话译文";
+  display: block;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: rgba(59, 130, 246, 0.8);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.15);
+  letter-spacing: 0.5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .anno-pop::before {
+    color: rgba(96, 165, 250, 0.9);
+    border-bottom-color: rgba(96, 165, 250, 0.2);
+  }
+}
+
+/* 移动端标签优化 */
+@media (max-width: 768px) {
+  .anno-pop::before {
+    font-size: 0.75em;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+  }
+}
+
+/* 底部固定弹窗（所有设备统一） */
+.anno-pop.bottom-popup {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: auto !important;
+  max-width: 680px !important;
+  width: calc(100% - 32px) !important;
+  border-radius: 16px 16px 0 0 !important;
+  margin: 0 !important;
+  box-shadow: 0 -4px 32px rgba(0,0,0,0.25) !important;
+  animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding: 20px 24px !important;
+}
+
+/* 移动端全宽显示 */
+@media (max-width: 768px) {
+  .anno-pop.bottom-popup {
+    max-width: 100% !important;
+    width: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+    padding: 16px 20px !important;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 移动端动画 */
+@media (max-width: 768px) {
+  @keyframes slideUpFade {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .anno-pop.bottom-popup {
+    box-shadow: 0 -4px 32px rgba(0,0,0,0.8) !important;
+  }
+}
