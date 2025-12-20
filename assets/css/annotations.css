@@ -73,7 +73,7 @@
 
 /* 显示状态 */
 .anno-pop.is-open {
-  display: block;
+  display: block !important;
   animation: fadeInScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
