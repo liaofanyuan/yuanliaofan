@@ -90,7 +90,7 @@
 
 /* 气泡顶部标签 */
 .anno-pop::before {
-  content: "💬 白话译文";
+  content: "💬 备注";
   display: block;
   font-size: 0.8em;
   font-weight: 600;
