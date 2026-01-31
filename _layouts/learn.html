@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    {%- include head.html -%}
+    <link rel="stylesheet" href="{{ '/assets/css/learn-mode.css' | relative_url }}">
+    <title>{{ page.title }} - 自主学习模式</title>
+</head>
+<body>
+    <div class="book">
+        {%- include toc-date.html -%}
+
+        <div class="book-body">
+            <div class="book-header" role="navigation">
+                <h1>
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                    <a href=".">{{ page.title | escape }}</a>
+                </h1>
+            </div>
+
+            <div class="body-inner">
+                <!-- 主题切换按钮 -->
+                <button class="theme-toggle" id="theme-toggle">
+                    <span id="theme-icon">🌙</span>
+                    <span id="theme-text">暗色模式</span>
+                </button>
+
+                <div class="learn-container" id="learn-app">
+                    
+                    <!-- 进度条 -->
+                    <div class="progress-wrapper" id="progress-wrapper">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="progress-text" id="progress-text">0/6 模块</div>
+                    </div>
+
+                    <!-- 模块视图 -->
+                    <div class="module-view" id="module-view">
+                        <header class="module-header" id="module-header">
+                            <div class="module-title-wrapper">
+                                <h2 class="module-title" id="module-title"></h2>
+                                <span class="module-indicator" id="module-indicator"></span>
+                            </div>
+                        </header>
+
+                        <article class="module-content" id="module-content">
+                            <!-- 动态加载内容 -->
+                        </article>
+
+                        <footer class="module-actions">
+                            <button class="btn btn-outline" id="btn-summary">
+                                查看本模块大纲
+                            </button>
+                            <button class="btn btn-primary" id="btn-next">
+                                我已理解，进入下一模块
+                            </button>
+                        </footer>
+                    </div>
+
+                    <!-- 大纲弹窗 -->
+                    <div class="summary-overlay" id="summary-overlay">
+                        <div class="summary-card">
+                            <div class="summary-header">
+                                <h3 id="summary-title">本模块要点总结</h3>
+                                <button class="btn-close" id="btn-close-summary">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="summary-body">
+                                <ul id="summary-points"></ul>
+                                <div class="summary-takeaway">
+                                    <strong>核心要点：</strong>
+                                    <p id="summary-key"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 测试视图 -->
+                    <div class="quiz-view hidden" id="quiz-view">
+                        <div class="quiz-header">
+                            <h2>学习测试</h2>
+                            <p class="quiz-subtitle">检验你对《立命之学》的理解深度</p>
+                        </div>
+
+                        <div class="quiz-progress">
+                            <span id="quiz-progress-text">第 1/6 题</span>
+                        </div>
+
+                        <div class="quiz-question-card" id="quiz-card">
+                            <div class="quiz-question" id="quiz-question"></div>
+                            <div class="quiz-options" id="quiz-options"></div>
+                            <div class="quiz-feedback hidden" id="quiz-feedback"></div>
+                            <div class="quiz-actions">
+                                <button class="btn btn-primary" id="btn-submit-answer">提交答案</button>
+                                <button class="btn btn-primary hidden" id="btn-next-question">下一题</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 完成页面 -->
+                    <div class="complete-view hidden" id="complete-view">
+                        <div class="complete-card">
+                            <div class="complete-icon">✓</div>
+                            <h2>恭喜完成《立命之学》</h2>
+                            <p class="complete-summary">本章核心：命由我作，福自己求</p>
+                            <div class="complete-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">测试正确率</span>
+                                    <span class="stat-value" id="complete-score">0%</span>
+                                </div>
+                            </div>
+                            <div class="complete-actions">
+                                <button class="btn btn-outline" id="btn-review-modules">
+                                    重新学习某一模块
+                                </button>
+                                <a href="{{ page.originalPath }}" class="btn btn-primary">
+                                    查看完整原文
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 返回原文入口 -->
+                <div class="mode-switcher">
+                    <a href="{{ page.originalPath }}" class="switch-link">
+                        <i class="fa fa-book"></i> 切换到完整阅读模式
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.LESSON_DATA = {{ site.data.lessons[page.lessonId] | jsonify }};
+        window.LESSON_CONTENT = {{ page.content | jsonify }};
+    </script>
+    <script src="{{ '/assets/js/learn-mode.js' | relative_url }}"></script>
+    
+    {%- include footer.html -%}
+</body>
+</html>
