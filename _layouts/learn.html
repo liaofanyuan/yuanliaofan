@@ -2,8 +2,19 @@
 <html lang="zh-CN">
 <head>
     {%- include head.html -%}
-    <link rel="stylesheet" href="{{ '/assets/css/learn-mode.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/learn-mode.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     <title>{{ page.title }} - 自主学习模式</title>
+    <style>
+        /* 关键内联样式 - 确保页面正确显示 */
+        .summary-overlay { display: none !important; }
+        .summary-overlay.show { display: flex !important; }
+        .quiz-view.hidden, .complete-view.hidden { display: none !important; }
+        .module-content { background: #fff !important; border: 2px solid #e5e7eb !important; border-radius: 8px !important; padding: 3rem !important; }
+        .module-header { border-left: 6px solid #1f2937 !important; background: linear-gradient(90deg, rgba(31,41,55,0.05), transparent) !important; padding: 1.25rem 1.5rem !important; margin-bottom: 2.5rem !important; }
+        .btn { padding: 0.875rem 1.75rem !important; border-radius: 6px !important; font-weight: 600 !important; cursor: pointer !important; }
+        .btn-primary { background: #1f2937 !important; color: #fff !important; border: 2px solid #1f2937 !important; }
+        .btn-outline { background: #fff !important; color: #374151 !important; border: 2px solid #d1d5db !important; }
+    </style>
 </head>
 <body>
     <div class="book">
@@ -24,7 +35,7 @@
                     <span id="theme-text">暗色模式</span>
                 </button>
 
-                <div class="learn-container" id="learn-app">
+                <div class="learn-container" id="learn-app" data-ready="false">
                     
                     <!-- 进度条 -->
                     <div class="progress-wrapper" id="progress-wrapper">
@@ -134,10 +145,30 @@
     </div>
 
     <script>
+        // 确保数据在JS初始化前加载
         window.LESSON_DATA = {{ site.data.lessons[page.lessonId] | jsonify }};
         window.LESSON_CONTENT = {{ page.content | jsonify }};
     </script>
     <script src="{{ '/assets/js/learn-mode.js' | relative_url }}"></script>
+    <script>
+        // 检测 learn-mode.css 是否正确加载（防止 PJAX 导航问题）
+        (function() {
+            var cssLoaded = false;
+            var sheets = document.styleSheets;
+            for (var i = 0; i < sheets.length; i++) {
+                try {
+                    if (sheets[i].href && sheets[i].href.indexOf('learn-mode.css') > -1) {
+                        cssLoaded = true;
+                        break;
+                    }
+                } catch (e) {}
+            }
+            if (!cssLoaded && !window._learnModeReloaded) {
+                window._learnModeReloaded = true;
+                window.location.reload();
+            }
+        })();
+    </script>
     
     {%- include footer.html -%}
 </body>

@@ -37,12 +37,13 @@
   };
 
   function init() {
+    // 获取数据
     lessonData = window.LESSON_DATA;
     lessonContent = window.LESSON_CONTENT;
     
-    if (!lessonData || !lessonData.modules || lessonData.modules.length === 0) {
-      console.error('课程数据未加载或格式错误', lessonData);
-      elements.moduleContent.innerHTML = '<p style="color: #ef4444;">数据加载失败，请刷新页面重试</p>';
+    // 简单检查数据是否存在
+    if (!lessonData || !lessonData.modules) {
+      console.error('课程数据未加载', lessonData);
       return;
     }
 
@@ -116,7 +117,7 @@
   function loadProgress() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
+      if (saved && lessonData && lessonData.id) {
         const data = JSON.parse(saved);
         return data[lessonData.id] || {};
       }
@@ -359,7 +360,7 @@
     window.scrollTo(0, 0);
   }
 
-  // 确保数据加载后再初始化
+  // 数据已在head中预加载，DOM加载完成后直接初始化
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
