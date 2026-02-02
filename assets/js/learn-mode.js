@@ -17,6 +17,7 @@
     moduleTitle: document.getElementById('module-title'),
     moduleIndicator: document.getElementById('module-indicator'),
     moduleContent: document.getElementById('module-content'),
+    btnPrev: document.getElementById('btn-prev'),
     btnSummary: document.getElementById('btn-summary'),
     btnNext: document.getElementById('btn-next'),
     summaryOverlay: document.getElementById('summary-overlay'),
@@ -63,6 +64,7 @@
   }
 
   function bindEvents() {
+    if (elements.btnPrev) elements.btnPrev.addEventListener('click', prevModule);
     if (elements.btnSummary) elements.btnSummary.addEventListener('click', showSummary);
     if (elements.btnNext) elements.btnNext.addEventListener('click', nextModule);
     if (elements.btnCloseSummary) elements.btnCloseSummary.addEventListener('click', hideSummary);
@@ -167,13 +169,27 @@
     const content = formatContent(module.content);
     elements.moduleContent.innerHTML = content;
 
+    // 处理"上一模块"按钮状态
+    if (elements.btnPrev) {
+      if (currentModuleIndex === 0) {
+        elements.btnPrev.disabled = true;
+        elements.btnPrev.style.opacity = '0.5';
+        elements.btnPrev.style.cursor = 'not-allowed';
+      } else {
+        elements.btnPrev.disabled = false;
+        elements.btnPrev.style.opacity = '1';
+        elements.btnPrev.style.cursor = 'pointer';
+      }
+    }
+
+    // 处理"下一模块"按钮文本
     const isCompleted = progress.completedModules && progress.completedModules.includes(currentModuleIndex);
     if (isCompleted) {
       elements.btnNext.textContent = currentModuleIndex === lessonData.modules.length - 1 
         ? '进入测试' 
-        : '进入下一模块';
+        : '进入下一模块 →';
     } else {
-      elements.btnNext.textContent = '我已理解，进入下一模块';
+      elements.btnNext.textContent = '我已理解，进入下一模块 →';
     }
   }
 
@@ -203,6 +219,16 @@
 
   function hideSummary() {
     elements.summaryOverlay.classList.remove('show');
+  }
+
+  function prevModule() {
+    if (currentModuleIndex > 0) {
+      currentModuleIndex--;
+      progress.currentModule = currentModuleIndex;
+      saveProgress();
+      showModuleView();
+      window.scrollTo(0, 0);
+    }
   }
 
   function nextModule() {
