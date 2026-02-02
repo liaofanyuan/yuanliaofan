@@ -85,12 +85,12 @@ body .learn-container {
 }
 
 body .module-header {
-  border-left: 6px solid #1f2937 !important;
-  background: linear-gradient(90deg, rgba(31, 41, 55, 0.05), transparent) !important;
-  padding: 1.25rem 1.5rem !important;
-  margin-bottom: 2.5rem !important;
+  border-left: 6px solid #1f2937;
+  background: linear-gradient(90deg, rgba(31, 41, 55, 0.05), transparent);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
   transition: all 0.3s ease;
-  border-radius: 0 6px 6px 0 !important;
+  border-radius: 0 6px 6px 0;
 }
 
 .module-title-wrapper {
@@ -118,14 +118,14 @@ body .module-header {
 }
 
 body .module-content {
-  background: #ffffff !important;
-  border: 2px solid #e5e7eb !important;
-  border-radius: 8px !important;
-  padding: 3rem !important;
-  margin-bottom: 2rem !important;
-  line-height: 2 !important;
-  color: #1f2937 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  line-height: 2;
+  color: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .module-content p {
@@ -145,21 +145,21 @@ body .module-content {
 
 /* ========== 按钮样式 ========== */
 body .btn {
-  padding: 0.875rem 1.75rem !important;
-  border-radius: 6px !important;
-  font-size: 1rem !important;
-  cursor: pointer !important;
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
   transition: all 0.2s ease;
-  border: none !important;
-  font-weight: 600 !important;
+  border: none;
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
 
 body .btn-primary {
-  background: #1f2937 !important;
-  color: #fff !important;
-  border: 2px solid #1f2937 !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background: #1f2937;
+  color: #fff;
+  border: 2px solid #1f2937;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
@@ -170,9 +170,9 @@ body .btn-primary {
 }
 
 body .btn-outline {
-  background: #fff !important;
-  color: #374151 !important;
-  border: 2px solid #d1d5db !important;
+  background: #fff;
+  color: #374151;
+  border: 2px solid #d1d5db;
 }
 
 .btn-outline:hover {
@@ -609,13 +609,13 @@ body.dark-theme .module-header {
 }
 
 body.dark-theme .module-title {
-  color: #fff !important;
+  color: #fff;
 }
 
 body.dark-theme .module-indicator {
   background: #262626;
   border-color: #404040;
-  color: #d4d4d4 !important;
+  color: #d4d4d4;
 }
 
 body.dark-theme .module-content {
